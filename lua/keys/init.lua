@@ -13,6 +13,12 @@ map("", "<C-u>", "<C-u>zz")
 map({"n", "v"}, "n", "nzzzv")
 map({"n", "v"}, "N", "Nzzzv")
 
+-- move between splits
+map("", "<C-j>", "<C-w>j")
+map("", "<C-k>", "<C-w>k")
+map("", "<C-h>", "<C-w>h")
+map("", "<C-l>", "<C-w>l")
+
 -- append next line to current line without moving the cursor
 map("n", "J", "mzJ`z")
 
@@ -38,6 +44,7 @@ map({"n", "v"}, "<leader>d", "\"_d")
 map({"n", "v"}, "<leader>D", "\"_D")
 map({"n", "v"}, "<leader>c", "\"_c")
 map({"n", "v"}, "<leader>C", "\"_C")
+
 -- delete to void register when pasting over a selection
 map("x", "<leader>p", [["_dP]])
 
@@ -54,3 +61,13 @@ map("", "<leader>9", [["9]])
 
 -- remove highlighted text
 map("", "<leader>n", ":nohl<CR>")
+
+-- keep text highlighted after indent/outdent
+map("", "<", "<gv")
+map("", ">", ">gv")
+map("", "<<", "<M-v><")
+map("", ">>", "<M-v>>")
+
+-- use tab/shift-tab to cycle b/w tabs
+map("n", "<Tab>", "gt")
+map("n", "<S-Tab>", "gT")
