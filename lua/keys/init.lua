@@ -36,6 +36,8 @@ map({"n", "v"}, "<leader>P", [["+P]])
 -- delete to void register
 map({"n", "v"}, "<leader>d", "\"_d")
 map({"n", "v"}, "<leader>D", "\"_D")
+map({"n", "v"}, "<leader>c", "\"_c")
+map({"n", "v"}, "<leader>C", "\"_C")
 -- delete to void register when pasting over a selection
 map("x", "<leader>p", [["_dP]])
 
@@ -45,10 +47,10 @@ map("", "<leader>2", [["2]])
 map("", "<leader>3", [["3]])
 map("", "<leader>4", [["4]])
 map("", "<leader>5", [["5]])
-
--- move line up down in visual mode
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-1<CR>gv=gv")
+map("", "<leader>6", [["6]])
+map("", "<leader>7", [["7]])
+map("", "<leader>8", [["8]])
+map("", "<leader>9", [["9]])
 
 -- remove highlighted text
 map("", "<leader>n", ":nohl<CR>")
