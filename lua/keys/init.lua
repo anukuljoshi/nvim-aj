@@ -54,5 +54,3 @@ map("", "<leader>9", [["9]])
 
 -- remove highlighted text
 map("", "<leader>n", ":nohl<CR>")
-
-print("keys")
