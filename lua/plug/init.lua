@@ -17,12 +17,14 @@ plugins = {
             vim.o.timeout = true
             vim.o.timeoutlen = 300
         end
-    }, {
+    },
+    {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.5',
         -- or                              , branch = '0.1.x',
         dependencies = {'nvim-lua/plenary.nvim'}
-    }, {
+    },
+    {
         { 'VonHeikemen/lsp-zero.nvim', branch = 'v3.x' },
         {'williamboman/mason.nvim'},
         {'williamboman/mason-lspconfig.nvim'},
@@ -30,15 +32,28 @@ plugins = {
         {'hrsh7th/cmp-nvim-lsp'},
         {'hrsh7th/nvim-cmp'},
         {'L3MON4D3/LuaSnip'}
-    }, {
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000
-    }, {
+    },
+    {
         'smoka7/hop.nvim',
         version = "*",
         opts = {}
     },
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            require("nvim-tree").setup {}
+        end,
+    }
 }
 
 require("lazy").setup(plugins, opts)

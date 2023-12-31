@@ -30,3 +30,11 @@ opt.tabstop = 4                  -- num:  Number of spaces tabs count for
 -- [[ Splits ]]
 opt.splitright = true            -- bool: Place new window to right of current one
 opt.splitbelow = true            -- bool: Place new window below the current one
+
+-- set when using nvim-tree
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
