@@ -70,6 +70,21 @@ plugins = {
             -- add any options here
         },
         lazy = false,
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
+    },
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+    },
+    {
+        'akinsho/toggleterm.nvim',
+        version = "*",
+        opts = {
+        }
     }
 }
 
