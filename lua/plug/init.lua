@@ -85,7 +85,7 @@ plugins = {
         version = "*",
         opts = {
         }
-    }
+    },
 }
 
 require("lazy").setup(plugins, opts)
