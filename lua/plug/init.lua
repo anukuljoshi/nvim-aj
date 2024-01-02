@@ -2,7 +2,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system(
         {"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", -- latest stable release
-         lazypath})
+            lazypath})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -30,7 +30,68 @@ plugins = {
         {'williamboman/mason-lspconfig.nvim'},
         {'neovim/nvim-lspconfig'},
         {'hrsh7th/cmp-nvim-lsp'},
-        {'hrsh7th/nvim-cmp'},
+        {
+            'hrsh7th/nvim-cmp',
+            config = function ()
+                local cmp = require("cmp")
+                cmp.setup({
+                    mapping = {
+                        ['<Tab>'] = cmp.mapping({
+                            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+                            c = function(fallback)
+                                if cmp.visible() then
+                                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                                else
+                                    fallback()
+                                end
+                            end
+                        }),
+                        ['<C-n>'] = cmp.mapping({
+                            c = function()
+                                if cmp.visible() then
+                                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                                else
+                                    vim.api.nvim_feedkeys(t('<Down>'), 'n', true)
+                                end
+                            end,
+                            i = function(fallback)
+                                if cmp.visible() then
+                                    cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                                else
+                                    fallback()
+                                end
+                            end
+                        }),
+                        ['<C-p>'] = cmp.mapping({
+                            c = function()
+                                if cmp.visible() then
+                                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                                else
+                                    vim.api.nvim_feedkeys(t('<Up>'), 'n', true)
+                                end
+                            end,
+                            i = function(fallback)
+                                if cmp.visible() then
+                                    cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                                else
+                                    fallback()
+                                end
+                            end
+                        }),
+                        ['<CR>'] = cmp.mapping({
+                            i = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false }),
+                            c = function(fallback)
+                                if cmp.visible() then
+                                    cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
+                                else
+                                    fallback()
+                                end
+                            end
+                        }),
+                    },
+                })
+            end
+        },
         {'L3MON4D3/LuaSnip'}
     },
     {
@@ -57,7 +118,12 @@ plugins = {
         config = function () 
             local configs = require("nvim-treesitter.configs")
             configs.setup({
-                ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+                ensure_installed = {
+                    "c", "lua",
+                    "go", "python",
+                    "typescript", "javascript",
+                    "html", "css"
+                },
                 sync_install = false,
                 highlight = { enable = true },
                 indent = { enable = true },  

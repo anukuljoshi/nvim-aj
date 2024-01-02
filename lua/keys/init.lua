@@ -71,3 +71,4 @@ map("", ">>", "<M-v>>")
 -- use tab/shift-tab to cycle b/w tabs
 map("n", "<Tab>", "gt")
 map("n", "<S-Tab>", "gT")
+
