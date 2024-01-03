@@ -35,7 +35,7 @@ return {
         }
     },
     {
-        "tpope/vim-surround",
+        "kylechui/nvim-surround",
         version = "*",
         opts = {},
     },
