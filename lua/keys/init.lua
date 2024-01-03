@@ -23,9 +23,9 @@ map("", "<C-l>", "<C-w>l")
 map("n", "J", "mzJ`z")
 
 -- gg moves cursor to start of first line
-map("", "gg", "gg0")
+map("n", "gg", "gg0")
 -- G moves cursor to end of last line
-map("", "G", "G$")
+map("n", "G", "G$")
 
 -- copy from cursor to end of line
 map("n", "Y", "y$")
@@ -49,24 +49,22 @@ map({"n", "v"}, "<leader>C", "\"_C")
 map("x", "<leader>p", [["_dP]])
 
 -- map register n to <leader>n
-map("", "<leader>1", [["1]])
-map("", "<leader>2", [["2]])
-map("", "<leader>3", [["3]])
-map("", "<leader>4", [["4]])
-map("", "<leader>5", [["5]])
-map("", "<leader>6", [["6]])
-map("", "<leader>7", [["7]])
-map("", "<leader>8", [["8]])
-map("", "<leader>9", [["9]])
+map("n", "<leader>1", [["1]])
+map("n", "<leader>2", [["2]])
+map("n", "<leader>3", [["3]])
+map("n", "<leader>4", [["4]])
+map("n", "<leader>5", [["5]])
+map("n", "<leader>6", [["6]])
+map("n", "<leader>7", [["7]])
+map("n", "<leader>8", [["8]])
+map("n", "<leader>9", [["9]])
 
 -- remove highlighted text
-map("", "<leader>n", ":nohl<CR>")
+map("n", "<leader>n", ":nohl<CR>")
 
 -- keep text highlighted after indent/outdent
-map("", "<", "<gv")
-map("", ">", ">gv")
-map("", "<<", "<M-v><")
-map("", ">>", "<M-v>>")
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 
 -- use tab/shift-tab to cycle b/w tabs
 map("n", "<Tab>", "gt")

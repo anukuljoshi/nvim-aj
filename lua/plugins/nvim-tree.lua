@@ -2,7 +2,6 @@ local keymap = vim.keymap
 
 local function my_on_attach(bufnr)
     local api = require "nvim-tree.api"
-
     local function opts(desc)
         return {
             desc = "nvim-tree: " .. desc,
@@ -27,23 +26,30 @@ local function my_on_attach(bufnr)
         'n',
         'h',
         api.node.navigate.parent_close,
-        opts('Up')
+        opts('Parent')
     )
     keymap.set(
         'n',
         'l',
         api.node.open.edit,
-        opts('Help')
+        opts('Edit')
     )
 end
 
-require("nvim-tree").setup {
-    on_attach = my_on_attach,
-    hijack_cursor = true,
-    disable_netrw = true,
-    hijack_netrw = true,
-    view = {
-        side = "right",
+return {
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
+    dependencies = {
+        "nvim-tree/nvim-web-devicons",
     },
+    opts = {
+        on_attach = my_on_attach,
+        hijack_cursor = true,
+        disable_netrw = true,
+        hijack_netrw = true,
+        view = {
+            side = "right",
+        },
+    }
 }
-
