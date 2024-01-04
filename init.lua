@@ -13,3 +13,4 @@ require('keys')      -- Keymaps
 require('plug')      -- Plugins
 
 print("hello aj")
+
