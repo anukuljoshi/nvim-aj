@@ -23,7 +23,7 @@ return {
             start_in_insert = true,
             insert_mappings = false, -- whether or not the open mapping applies in insert mode
             terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
-            -- direction = 'vertical' | 'horizontal' | 'tab' | 'float',
+--            direction = 'vertical' | 'horizontal' | 'tab' | 'float',
             direction = 'float',
             float_opts = {
                 -- The border key is *almost* the same as 'nvim_open_win'
