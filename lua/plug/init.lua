@@ -9,7 +9,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins", opts)
 
 -- set theme
-vim.cmd.colorscheme "tokyonight"
+vim.cmd.colorscheme "rose-pine"
 
 -- lsp
 local lsp_zero = require('lsp-zero')
@@ -26,6 +26,5 @@ require('mason-lspconfig').setup({
         lsp_zero.default_setup,
     },
 })
-
 
 require("plug.hop")
