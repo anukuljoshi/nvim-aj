@@ -66,3 +66,5 @@ map("n", "<leader>n", ":nohl<CR>")
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
+map("i", "jk", "<Esc>")
+

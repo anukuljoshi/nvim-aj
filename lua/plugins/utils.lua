@@ -19,11 +19,10 @@ return {
         version = "*",
         opts = {
             open_mapping = [[<leader>t]],
-            hide_numbers = false, -- hide the number column in toggleterm buffers
+            hide_numbers = false,
             start_in_insert = true,
-            insert_mappings = false, -- whether or not the open mapping applies in insert mode
-            terminal_mappings = true, -- whether or not the open mapping applies in the opened terminals
---            direction = 'vertical' | 'horizontal' | 'tab' | 'float',
+            insert_mappings = false,
+            terminal_mappings = false,
             direction = 'float',
             float_opts = {
                 -- The border key is *almost* the same as 'nvim_open_win'
