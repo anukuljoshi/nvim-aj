@@ -18,11 +18,11 @@ return {
         'akinsho/toggleterm.nvim',
         version = "*",
         opts = {
-            open_mapping = [[<leader>t]],
+            open_mapping = [[<C-p>]],
             hide_numbers = false,
             start_in_insert = true,
             insert_mappings = false,
-            terminal_mappings = false,
+            terminal_mappings = true,
             direction = 'float',
             float_opts = {
                 -- The border key is *almost* the same as 'nvim_open_win'
