@@ -28,3 +28,6 @@ require('mason-lspconfig').setup({
 })
 
 require("plug.hop")
+
+vim.opt.termguicolors = true
+require("bufferline").setup{}

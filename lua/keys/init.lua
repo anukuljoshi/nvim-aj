@@ -68,3 +68,6 @@ map("v", ">", ">gv")
 
 map("i", "jk", "<Esc>")
 
+map("n", "<S-h>", "<Cmd>bp<CR>")
+map("n", "<S-l>", "<Cmd>bn<CR>")
+map("n", "<leader>x", "<Cmd>bd<CR>")

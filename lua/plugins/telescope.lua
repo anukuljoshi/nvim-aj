@@ -10,7 +10,7 @@ return {
                 "<leader>fa",
                 function ()
                     builtin.find_files({
-                        find_command = {'rg', '--files', '--hidden', '-g', '!.git' }
+                        find_command = {'rg', '--files', '--hidden', '-g', '!.git', '--no-ignore-vcs' }
                     })
                 end,
                 {}
@@ -19,7 +19,12 @@ return {
             vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
             vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
             vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-            vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+            vim.keymap.set(
+                'n', '<leader>.',
+                function()
+                    builtin.find_files({ cwd = vim.fn.expand('%:p:h') })
+                end
+            )
         end,
         opts = {
             pickers = {
