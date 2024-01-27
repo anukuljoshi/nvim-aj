@@ -1,6 +1,6 @@
 local keymap = vim.keymap
 
-local function my_on_attach(bufnr)
+local function on_attach(bufnr)
     local api = require "nvim-tree.api"
     local function opts(desc)
         return {
@@ -16,40 +16,53 @@ local function my_on_attach(bufnr)
     api.config.mappings.default_on_attach(bufnr)
 
     -- custom mappings
-    keymap.set('n', '<leader>e', '<Cmd>NvimTreeToggle<CR>', {
-        silent = true
-    })
-    keymap.set('n', '<leader>E', '<Cmd>NvimTreeFindFile<CR>z.', {
+    -- open nvim-tree
+    -- keymap.set("n", "<leader>ex", "<Cmd>NvimTreeToggle<CR>", {
+    --     silent = true
+    -- })
+    -- open nvim-tree with focus on current file
+    keymap.set("n", "<leader>e", "<Cmd>NvimTreeFindFile<CR>z.", {
         silent = true
     })
     keymap.set(
-        'n',
-        'h',
+        "n",
+        "h",
         api.node.navigate.parent_close,
-        opts('Parent')
+        opts("Parent")
     )
     keymap.set(
-        'n',
-        'l',
+        "n",
+        "l",
         api.node.open.edit,
-        opts('Edit')
+        opts("Edit")
     )
 end
 
 return {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
-    opts = {
-        on_attach = my_on_attach,
-        hijack_cursor = true,
-        disable_netrw = true,
-        hijack_netrw = true,
-        view = {
-            side = "right",
+    -- nvim tree
+    {
+        "nvim-tree/nvim-tree.lua",
+        version = "*",
+        lazy = false,
+        opts = {},
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
         },
-    }
+        config = function()
+            require("nvim-tree").setup({
+                on_attach = on_attach,
+                hijack_cursor = true,
+                disable_netrw = true,
+                hijack_netrw = true,
+                view = {
+                    side = "right",
+                },
+                actions = {
+                    open_file = {
+                        quit_on_open = true,
+                    },
+                },
+            })
+        end
+    },
 }

@@ -1,5 +1,4 @@
 --[[ keys.lua ]]
-local map = vim.keymap.set
 
 -- This function takes in four parameters:
 --     mode: the mode you want the key bind to apply to (e.g., insert mode, normal mode, command mode, visual mode).
@@ -8,66 +7,68 @@ local map = vim.keymap.set
 --     options: an optional Lua table of options to configure (e.g., silent or noremap).
 
 -- center cusror on screen when moving
-map("", "<C-d>", "<C-d>zz")
-map("", "<C-u>", "<C-u>zz")
-map({"n", "v"}, "n", "nzzzv")
-map({"n", "v"}, "N", "Nzzzv")
+vim.keymap.set("", "<C-d>", "<C-d>zz")
+vim.keymap.set("", "<C-u>", "<C-u>zz")
+vim.keymap.set({ "n", "v" }, "n", "nzzzv")
+vim.keymap.set({ "n", "v" }, "N", "Nzzzv")
 
 -- move between splits
-map("", "<C-j>", "<C-w>j")
-map("", "<C-k>", "<C-w>k")
-map("", "<C-h>", "<C-w>h")
-map("", "<C-l>", "<C-w>l")
+vim.keymap.set("", "<C-j>", "<C-w>j")
+vim.keymap.set("", "<C-k>", "<C-w>k")
+vim.keymap.set("", "<C-h>", "<C-w>h")
+vim.keymap.set("", "<C-l>", "<C-w>l")
 
 -- append next line to current line without moving the cursor
-map("n", "J", "mzJ`z")
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- gg moves cursor to start of first line
-map("n", "gg", "gg0")
+vim.keymap.set({ "n", "v" }, "gg", "gg0")
 -- G moves cursor to end of last line
-map("n", "G", "G$")
+vim.keymap.set({ "n", "v" }, "G", "G$")
 
 -- copy from cursor to end of line
-map("n", "Y", "y$")
+vim.keymap.set("n", "Y", "y$")
 
 -- requires clipboard set up for neovim see :help clipboard
 -- install xclip | sudo apt install xclip
 -- copy to system clipboard register
-map({"n", "v"}, "<leader>y", [["+y]])
-map({"n", "v"}, "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set({ "n", "v" }, "<leader>Y", [["+Y]])
 -- paste from system clipboard
-map({"n", "v"}, "<leader>p", [["+p]])
-map({"n", "v"}, "<leader>P", [["+P]])
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]])
+vim.keymap.set({ "n", "v" }, "<leader>P", [["+P]])
 
 -- delete to void register
-map({"n", "v"}, "<leader>d", "\"_d")
-map({"n", "v"}, "<leader>D", "\"_D")
-map({"n", "v"}, "<leader>c", "\"_c")
-map({"n", "v"}, "<leader>C", "\"_C")
+vim.keymap.set({ "n", "v" }, "<leader>d", "\"_d")
+vim.keymap.set({ "n", "v" }, "<leader>D", "\"_D")
+vim.keymap.set({ "n", "v" }, "<leader>c", "\"_c")
+vim.keymap.set({ "n", "v" }, "<leader>C", "\"_C")
 
 -- delete to void register when pasting over a selection
-map("x", "<leader>p", [["_dP]])
+vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- map register n to <leader>n
-map("n", "<leader>1", [["1]])
-map("n", "<leader>2", [["2]])
-map("n", "<leader>3", [["3]])
-map("n", "<leader>4", [["4]])
-map("n", "<leader>5", [["5]])
-map("n", "<leader>6", [["6]])
-map("n", "<leader>7", [["7]])
-map("n", "<leader>8", [["8]])
-map("n", "<leader>9", [["9]])
+vim.keymap.set("n", "<leader>1", [["1]])
+vim.keymap.set("n", "<leader>2", [["2]])
+vim.keymap.set("n", "<leader>3", [["3]])
+vim.keymap.set("n", "<leader>4", [["4]])
+vim.keymap.set("n", "<leader>5", [["5]])
+vim.keymap.set("n", "<leader>6", [["6]])
+vim.keymap.set("n", "<leader>7", [["7]])
+vim.keymap.set("n", "<leader>8", [["8]])
+vim.keymap.set("n", "<leader>9", [["9]])
 
 -- remove highlighted text
-map("n", "<leader>n", ":nohl<CR>")
+vim.keymap.set("n", "<leader>n", ":nohl<CR>")
+
+-- move line up down in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- keep text highlighted after indent/outdent
-map("v", "<", "<gv")
-map("v", ">", ">gv")
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
-map("i", "jk", "<Esc>")
+vim.keymap.set("i", "jk", "<Esc>")
 
-map("n", "<S-Tab>", "<Cmd>bp<CR>")
-map("n", "<Tab>", "<Cmd>bn<CR>")
-map("n", "<leader>w", "<Cmd>bd<CR>")
+require("keys.cmd")

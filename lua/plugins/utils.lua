@@ -1,6 +1,7 @@
 return {
+    -- utils
     {
-        'numToStr/Comment.nvim',
+        "numToStr/Comment.nvim",
         opts = {},
         lazy = false,
     },
@@ -8,6 +9,24 @@ return {
         "smoka7/hop.nvim",
         version = "*",
         opts = {},
+        config = function()
+            local hop = require("hop")
+            hop.setup({})
+            vim.keymap.set(
+                "", "s",
+                function()
+                    hop.hint_char1()
+                end,
+                {}
+            )
+            vim.keymap.set(
+                "", "<leader>gg",
+                function()
+                    hop.hint_vertical()
+                end,
+                {}
+            )
+        end
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -15,7 +34,7 @@ return {
         opts = {}
     },
     {
-        'akinsho/toggleterm.nvim',
+        "akinsho/toggleterm.nvim",
         version = "*",
         opts = {
             open_mapping = [[<C-p>]],
@@ -38,5 +57,38 @@ return {
         version = "*",
         opts = {},
     },
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        config = function()
+            require("todo-comments").setup({})
+            vim.keymap.set("n", "<leader>ts", "<Cmd>TodoTelescope<CR>")
+            vim.keymap.set("n", "<leader>tb", "<Cmd>TodoTrouble<CR>")
+        end
+    },
+    {
+        "jiaoshijie/undotree",
+        dependencies = "nvim-lua/plenary.nvim",
+        config = function()
+            local undotree = require("undotree")
+            undotree.setup({
+                keymaps = {
+                    ["j"] = "move_next",
+                    ["k"] = "move_prev",
+                    ["h"] = "move2parent",
+                    ["J"] = "move_change_next",
+                    ["K"] = "move_change_prev",
+                    ["<cr>"] = "action_enter",
+                    ["p"] = "enter_diffbuf",
+                    ["q"] = "quit",
+                },
+            })
+            vim.keymap.set("n", "<leader>u", "<Cmd>lua require('undotree').toggle()<CR>")
+        end,
+    },
 }
-
