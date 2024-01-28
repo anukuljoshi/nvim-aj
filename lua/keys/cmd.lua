@@ -35,48 +35,48 @@ autocmd({ "LspAttach" }, {
             }
         end
         vim.keymap.set(
-            "n", "lgd",
+            "n", "<leader>gd",
             vim.lsp.buf.definition,
             optsCreate("LSP [G]oto [D]efinition")
         )
         vim.keymap.set(
-            "n", "lgr",
+            "n", "<leader>gr",
             require("telescope.builtin").lsp_references,
             optsCreate("LSP [G]oto [R]eferences")
         )
         vim.keymap.set(
-            "n", "lgI",
+            "n", "<leader>gI",
             vim.lsp.buf.implementation,
             optsCreate("LSP [G]oto [I]mplementation")
         )
         vim.keymap.set(
-            "n", "lrn",
+            "n", "<leader>cr",
             vim.lsp.buf.rename,
             optsCreate("LSP [R]e[n]ame")
         )
         vim.keymap.set(
-            "n", "lca",
+            "n", "<leader>ca",
             vim.lsp.buf.code_action,
             optsCreate("LSP [C]ode [A]ction")
         )
         vim.keymap.set(
-            "n", "lgt",
+            "n", "<leader>gt",
             vim.lsp.buf.type_definition,
             optsCreate("[G]oto [T]ype [D]efinition")
         )
         vim.keymap.set(
-            "n", "lds",
+            "n", "<leader>ds",
             require("telescope.builtin").lsp_document_symbols,
             optsCreate("[D]ocument [S]ymbols")
         )
         vim.keymap.set(
-            "n", "lws",
+            "n", "<leader>ws",
             require("telescope.builtin").lsp_dynamic_workspace_symbols,
             optsCreate("[W]orkspace [S]ymbols")
         )
         -- Lesser used LSP functionality
         vim.keymap.set(
-            "n", "lgD",
+            "n", "<leader>gD",
             vim.lsp.buf.declaration,
             optsCreate("[G]oto [D]eclaration")
         )
@@ -100,7 +100,7 @@ autocmd({ "LspAttach" }, {
             end
         end, { desc = "Format current buffer with LSP" })
         vim.keymap.set(
-            "n", "fmt",
+            "n", "<leader>cf",
             "<Cmd>Format<CR>",
             optsCreate("Format current buffer")
         )

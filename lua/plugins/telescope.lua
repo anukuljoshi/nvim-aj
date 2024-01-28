@@ -17,8 +17,15 @@ return {
                 })
             end, {})
             vim.keymap.set("n", "<leader>fw", builtin.live_grep, {})
+            vim.keymap.set("n", "<leader>fiw", builtin.grep_string, {})
+            vim.keymap.set("n", "<leader>fm", builtin.marks, {})
             vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
             vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+            vim.keymap.set("n", "<leader>f.", function()
+                builtin.find_files({
+                    cwd = vim.fn.expand("%:p:h")
+                })
+            end)
             vim.keymap.set("n", "<leader>f.", function()
                 builtin.find_files({
                     cwd = vim.fn.expand("%:p:h")

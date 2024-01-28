@@ -56,8 +56,9 @@ return {
             vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
             -- Close buffer
             vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
-            vim.keymap.set("n", "<leader>w", "<Cmd>BufferClose<CR>", opts)
-            vim.keymap.set("n", "<leader>W", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+            vim.keymap.set("n", "<A-C>", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+            vim.keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>", opts)
+            vim.keymap.set("n", "<leader>X", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
             -- Wipeout buffer
             --                 :BufferWipeout
             -- Close commands
