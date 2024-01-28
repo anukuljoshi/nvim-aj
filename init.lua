@@ -10,6 +10,7 @@ require("vars") -- Variables
 require("opts") -- Options
 require("plug")
 require("colors")
+require("projects")
 require("keys") -- Keymaps
 
 print("hello aj")
