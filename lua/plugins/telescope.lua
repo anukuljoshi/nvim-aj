@@ -26,11 +26,6 @@ return {
                     cwd = vim.fn.expand("%:p:h")
                 })
             end)
-            vim.keymap.set("n", "<leader>f.", function()
-                builtin.find_files({
-                    cwd = vim.fn.expand("%:p:h")
-                })
-            end)
         end
     },
     {
