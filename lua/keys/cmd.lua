@@ -1,32 +1,89 @@
-local augroup = vim.api.nvim_create_augroup
-local ajGroup = augroup("AJ", {})
+-- ################
+-- # Autocommands #
+-- ################
+
+local fn = vim.fn
 
 local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
+local augroup = vim.api.nvim_create_augroup
 
-function R(name)
-    require("plenary.reload").reload_module(name)
-end
+-- General Settings
+local general = augroup("General Settings", { clear = true })
+local LSPGroup = augroup("LSP Settings", { clear = true })
+
+autocmd("VimEnter", {
+    callback = function(data)
+        print("vim enter", data.file)
+        -- buffer is a directory
+        local directory = vim.fn.isdirectory(data.file) == 1
+
+        -- print("open telescope", directory)
+        -- change to the directory
+        if directory then
+            vim.cmd.cd(data.file)
+            vim.cmd "Telescope find_files"
+            -- require("nvim-tree.api").tree.open()
+        end
+    end,
+    group = general,
+    desc = "Open Telescope when it's a Directory",
+})
 
 autocmd("TextYankPost", {
-    group = yank_group,
+    group = general,
     pattern = "*",
     callback = function()
         vim.highlight.on_yank({
             higroup = "IncSearch",
-            timeout = 40,
+            timeout = 100,
         })
     end,
 })
 
 autocmd({ "BufWritePre" }, {
-    group = ajGroup,
+    group = general,
     pattern = "*",
     command = [[%s/\s\+$//e]],
 })
 
+autocmd("BufEnter", {
+    callback = function()
+        vim.opt.formatoptions:remove { "c", "r", "o" }
+    end,
+    group = general,
+    desc = "Disable New Line Comment",
+})
+
+autocmd({ "FocusLost", "BufLeave", "BufWinLeave", "InsertLeave" }, {
+    callback = function()
+        if vim.bo.filetype ~= "" and vim.bo.buftype == "" then
+            vim.cmd "silent! w"
+        end
+    end,
+    group = general,
+    desc = "Auto Save",
+})
+
+autocmd("FocusGained", {
+    callback = function()
+        vim.cmd "checktime"
+    end,
+    group = general,
+    desc = "Update file when there are changes",
+})
+
+autocmd("FileType", {
+    pattern = { "gitcommit", "markdown", "text", "log" },
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.spell = true
+    end,
+    group = general,
+    desc = "Enable Wrap in these filetypes",
+})
+
 autocmd({ "LspAttach" }, {
-    group = ajGroup,
+    group = LSPGroup,
     callback = function(e)
         local function optsCreate(desc)
             return {

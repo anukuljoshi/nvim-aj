@@ -1,53 +1,33 @@
 return {
-    -- colorscheme
     {
-        "folke/tokyonight.nvim",
-        lazy = false,
-        priority = 1000,
-        opts = {},
-    },
-    {
-        "catppuccin/nvim",
-        name = "catppuccin",
-        priority = 1000,
-        opts = {},
-    },
-    {
-        "rebelot/kanagawa.nvim",
-        config = function()
-            require('kanagawa').setup({
+        "nobbmaestro/nvim-andromeda",
+        dependencies = {
+            "tjdevries/colorbuddy.nvim",
+            branch = "dev"
+        },
+        config = function ()
+            require("andromeda").setup({
+                preset = "andromeda",
                 colors = {
-                    palette = {
-                        -- default Bg Shades
-                        -- sumiInk0 = "#16161D",
-                        -- sumiInk1 = "#181820",
-                        -- sumiInk2 = "#1a1a22",
-                        -- sumiInk3 = "#1F1F28",
-                        -- sumiInk4 = "#2A2A37",
-                        -- sumiInk5 = "#363646",
-                        -- sumiInk6 = "#54546D", --fg
-
-                        -- custom override
-                        -- inactive barbar & statusline bg
-                        sumiInk0 = "#0d0d1e",
-                        -- main bg
-                        sumiInk3 = "#17122e",
-                        -- active barbar
-                        sumiInk4 = "#27223e",
-                        -- active line in telescope/nvim-tree
-                        sumiInk5 = "#0d0d1e",
-                    },
-                    theme = {
-                        -- change specific usages for a certain theme, or for all of them
-                        all = {
-                            ui = {
-                                -- remove color from LineNr, SignColumn
-                                bg_gutter = "none"
-                            }
-                        }
-                    }
-                },
+                    -- main background
+                    background = "#1b1e29",
+                    -- nvim tree active line, indent line
+                    mono_1     = "#404455",
+                    -- telescope active line, statusline, visual highlight
+                    mono_2     = "#101420",
+                    -- statusline text, line numbers, borders
+                    mono_3     = "#808495",
+                    -- unknown
+                    mono_4     = "#606064",
+                    -- comments
+                    mono_5     = "#8589A0",
+                    -- normal text
+                    mono_6     = "#d5ced9",
+                }
             })
+            vim.cmd[[highlight Visual guibg=#303445]]
+            vim.cmd[[highlight ColorColumn guibg=#303445]]
+            vim.cmd[[highlight StatusLineNC guibg=#303445]]
         end
     }
 }

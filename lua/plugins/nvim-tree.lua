@@ -1,7 +1,7 @@
 local keymap = vim.keymap
 
 local function on_attach(bufnr)
-    local api = require "nvim-tree.api"
+    local api = require("nvim-tree.api")
     local function opts(desc)
         return {
             desc = "nvim-tree: " .. desc,
@@ -17,9 +17,9 @@ local function on_attach(bufnr)
 
     -- custom mappings
     -- open nvim-tree
-    -- keymap.set("n", "<leader>ex", "<Cmd>NvimTreeToggle<CR>", {
-    --     silent = true
-    -- })
+    keymap.set("n", "<leader>E", "<Cmd>NvimTreeToggle<CR>", {
+        silent = true
+    })
     -- open nvim-tree with focus on current file
     keymap.set("n", "<leader>e", "<Cmd>NvimTreeFindFile<CR>z.", {
         silent = true
