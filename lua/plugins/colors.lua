@@ -33,7 +33,7 @@ return {
                         -- main bg
                         sumiInk3 = "#17122e",
                         -- active barbar
-                        sumiInk4 = "#17122e",
+                        sumiInk4 = "#27223e",
                         -- active line in telescope/nvim-tree
                         sumiInk5 = "#0d0d1e",
                     },

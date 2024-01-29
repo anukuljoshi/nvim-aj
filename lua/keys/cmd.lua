@@ -35,17 +35,17 @@ autocmd({ "LspAttach" }, {
             }
         end
         vim.keymap.set(
-            "n", "<leader>gd",
+            "n", "gd",
             vim.lsp.buf.definition,
             optsCreate("LSP [G]oto [D]efinition")
         )
         vim.keymap.set(
-            "n", "<leader>gr",
+            "n", "gr",
             require("telescope.builtin").lsp_references,
             optsCreate("LSP [G]oto [R]eferences")
         )
         vim.keymap.set(
-            "n", "<leader>gI",
+            "n", "gI",
             vim.lsp.buf.implementation,
             optsCreate("LSP [G]oto [I]mplementation")
         )
@@ -60,7 +60,7 @@ autocmd({ "LspAttach" }, {
             optsCreate("LSP [C]ode [A]ction")
         )
         vim.keymap.set(
-            "n", "<leader>gt",
+            "n", "gt",
             vim.lsp.buf.type_definition,
             optsCreate("[G]oto [T]ype [D]efinition")
         )
@@ -76,7 +76,7 @@ autocmd({ "LspAttach" }, {
         )
         -- Lesser used LSP functionality
         vim.keymap.set(
-            "n", "<leader>gD",
+            "n", "gD",
             vim.lsp.buf.declaration,
             optsCreate("[G]oto [D]eclaration")
         )
