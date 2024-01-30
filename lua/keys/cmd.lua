@@ -13,11 +13,9 @@ local LSPGroup = augroup("LSP Settings", { clear = true })
 
 autocmd("VimEnter", {
     callback = function(data)
-        print("vim enter", data.file)
         -- buffer is a directory
         local directory = vim.fn.isdirectory(data.file) == 1
 
-        -- print("open telescope", directory)
         -- change to the directory
         if directory then
             vim.cmd.cd(data.file)
