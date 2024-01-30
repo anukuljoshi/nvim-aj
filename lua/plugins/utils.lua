@@ -66,7 +66,13 @@ return {
             -- refer to the configuration section below
         },
         config = function()
-            require("todo-comments").setup({})
+            require("todo-comments").setup({
+                -- Show todo comments in the sign column but don't highlight the text
+                highlight = {
+                    before = "",
+                    after = ""
+                },
+            })
             vim.keymap.set("n", "<leader>ts", "<Cmd>TodoTelescope<CR>")
             vim.keymap.set("n", "<leader>tb", "<Cmd>TodoTrouble<CR>")
         end
