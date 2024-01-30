@@ -24,8 +24,8 @@ return {
             })
         end
     },
-    {
-        -- TODO: see other options and configure to need
-        "nvim-treesitter/nvim-treesitter-context",
-    },
+    -- {
+    --     -- TODO: see other options and configure to need
+    --     "nvim-treesitter/nvim-treesitter-context",
+    -- },
 }
