@@ -10,7 +10,7 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-  autocmd VimLeavePre,BufEnter *
+  autocmd VimLeavePre *
         \ mksession! .vim/session.vim
 ]])
 

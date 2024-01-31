@@ -54,11 +54,16 @@ return {
 
             -- Pin/unpin buffer
             vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
-            -- Close buffer
-            vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", opts)
-            vim.keymap.set("n", "<A-C>", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
-            vim.keymap.set("n", "<leader>x", "<Cmd>BufferClose<CR>", opts)
-            vim.keymap.set("n", "<leader>X", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+            -- close current
+            vim.keymap.set("n", "<leader>xc", "<Cmd>BufferClose<CR>", opts)
+            -- close others
+            vim.keymap.set("n", "<leader>xo", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+            -- close all
+            vim.keymap.set("n", "<leader>xa", "<Cmd>BufferWipeout<CR>", opts)
+            -- close left
+            vim.keymap.set("n", "<leader>xl", "<Cmd>BufferCloseBuffersLeft<CR>", opts)
+            -- close right
+            vim.keymap.set("n", "<leader>xr", "<Cmd>BufferCloseBuffersRight<CR>", opts)
             -- Wipeout buffer
             --                 :BufferWipeout
             -- Close commands
@@ -69,11 +74,6 @@ return {
             --                 :BufferCloseBuffersRight
             -- Magic buffer-picking mode
             vim.keymap.set("n", "<leader>bp", "<Cmd>BufferPick<CR>", opts)
-            -- Sort automatically by...
-            vim.keymap.set("n", "<leader>bb", "<Cmd>BufferOrderByBufferNumber<CR>", opts)
-            vim.keymap.set("n", "<leader>bd", "<Cmd>BufferOrderByDirectory<CR>", opts)
-            vim.keymap.set("n", "<leader>bl", "<Cmd>BufferOrderByLanguage<CR>", opts)
-            vim.keymap.set("n", "<leader>bw", "<Cmd>BufferOrderByWindowNumber<CR>", opts)
         end
     },
 }
