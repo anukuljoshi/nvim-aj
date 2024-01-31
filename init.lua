@@ -11,7 +11,8 @@ require("opts") -- Options
 require("plug")
 require("colors")
 require("statusline")
-require("projects")
+require("sessions")
 require("keys") -- Keymaps
+require("setup") -- Keymaps
 
 print("hello aj")

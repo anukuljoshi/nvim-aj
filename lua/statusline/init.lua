@@ -109,6 +109,16 @@ function M.git_component()
 end
 
 
+--- Filename
+---@return string
+function M.filename_component()
+    -- filename with parent dir
+    -- local filename = vim.fn.expand('%:p:h:t') .. '/' .. vim.fn.expand('%:t')
+    -- filename with base project
+    local filename = vim.fn.expand('%:p:.') .. '/' .. vim.fn.expand('%:t')
+    return filename
+end
+
 --- The buffer's filetype.
 ---@return string
 function M.filetype_component()
@@ -193,6 +203,7 @@ function M.render()
         concat_components {
             M.mode_component(),
             M.git_component(),
+            M.filename_component(),
         },
         '%#StatusLine#%=',
         concat_components {

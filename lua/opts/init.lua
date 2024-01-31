@@ -42,11 +42,3 @@ vim.diagnostic.config({
         prefix = "",
     },
 })
-
--- disable o and O creating comment when pressed of line with comment
-vim.opt.formatoptions:remove({ 'r', 'o' })
-
--- set when using nvim-tree
--- disable netrw at the very start of your init.lua
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
