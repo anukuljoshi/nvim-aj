@@ -9,4 +9,27 @@ return {
             vim.keymap.set("n", "<leader>df", "<Cmd>delmarks a-z<CR>")
         end
     },
+    {
+        "smoka7/hop.nvim",
+        version = "*",
+        opts = {},
+        config = function()
+            local hop = require("hop")
+            hop.setup({})
+            vim.keymap.set(
+                "", "s",
+                function()
+                    hop.hint_char1()
+                end,
+                {}
+            )
+            vim.keymap.set(
+                "", "<leader>gg",
+                function()
+                    hop.hint_vertical()
+                end,
+                {}
+            )
+        end
+    },
 }

@@ -6,19 +6,17 @@ return {
         config = function()
             require("gitsigns").setup({
                 signs = {
-                    add          = { text = "+" },
-                    -- rest are default
-                    change       = { text = "│" },
-                    delete       = { text = "_" },
-                    topdelete    = { text = "‾" },
-                    changedelete = { text = "~" },
-                    untracked    = { text = "┆" },
+                    add = { text = '+' },
+                    change = { text = '~' },
+                    delete = { text = '_' },
+                    topdelete = { text = '‾' },
+                    changedelete = { text = '~' },
                 },
                 current_line_blame = false,
                 current_line_blame_opts = {
                     virt_text = true,
                     -- "eol" | "overlay" | "right_align"
-                    virt_text_pos = "right_align",
+                    virt_text_pos = "eol",
                     delay = 500,
                     ignore_whitespace = false,
                     virt_text_priority = 100,
@@ -41,7 +39,15 @@ return {
                     end, { expr = true })
 
                     -- Actions
-                    vim.keymap.set("n", "<leader>gb", gs.toggle_current_line_blame)
+                    vim.keymap.set('n', '<leader>ha', gs.stage_hunk)
+                    vim.keymap.set('n', '<leader>hA', gs.stage_buffer)
+                    vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk)
+                    vim.keymap.set('n', '<leader>hr', gs.reset_hunk)
+                    vim.keymap.set('n', '<leader>hR', gs.reset_buffer)
+                    vim.keymap.set("n", "<leader>hp", "<Cmd>Gitsigns preview_hunk_inline<CR>", {})
+                    vim.keymap.set("n", "<leader>hb", gs.toggle_current_line_blame, {})
+                    vim.keymap.set('n', '<leader>hB', function() gs.blame_line{full=true} end)
+                    vim.keymap.set('n', '<leader>hd', gs.diffthis)
                 end
             })
         end
@@ -49,7 +55,8 @@ return {
     {
         "tpope/vim-fugitive",
         config = function ()
-            vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+            vim.keymap.set("n", "<leader>gv", "<Cmd>:vertical Git<CR>")
+            vim.keymap.set("n", "<leader>gh", "<Cmd>:Git<CR>")
 
             local ajFugitive = vim.api.nvim_create_augroup("ajFugitive", {})
 
