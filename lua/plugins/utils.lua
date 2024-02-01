@@ -97,4 +97,14 @@ return {
             vim.keymap.set("n", "<leader>u", "<Cmd>lua require('undotree').toggle()<CR>")
         end,
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {},
+        config = function ()
+            require('nvim-autopairs').setup({
+              disable_filetype = { "TelescopePrompt" , "vim" },
+            })
+        end
+    },
 }
