@@ -29,6 +29,7 @@ vim.opt.tabstop = 4      -- num:  Number of spaces tabs count for
 -- [[ Splits ]]
 vim.opt.splitright = true -- bool: Place new window to right of current one
 vim.opt.splitbelow = true -- bool: Place new window below the current one
+vim.o.diffopt = vim.o.diffopt .. ',vertical'
 
 vim.opt.signcolumn = "yes"
 vim.diagnostic.config({

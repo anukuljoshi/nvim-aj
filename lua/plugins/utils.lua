@@ -6,29 +6,6 @@ return {
         lazy = false,
     },
     {
-        "smoka7/hop.nvim",
-        version = "*",
-        opts = {},
-        config = function()
-            local hop = require("hop")
-            hop.setup({})
-            vim.keymap.set(
-                "", "s",
-                function()
-                    hop.hint_char1()
-                end,
-                {}
-            )
-            vim.keymap.set(
-                "", "<leader>gg",
-                function()
-                    hop.hint_vertical()
-                end,
-                {}
-            )
-        end
-    },
-    {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
         opts = {}
@@ -96,5 +73,15 @@ return {
             })
             vim.keymap.set("n", "<leader>u", "<Cmd>lua require('undotree').toggle()<CR>")
         end,
+    },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        opts = {},
+        config = function ()
+            require('nvim-autopairs').setup({
+              disable_filetype = { "TelescopePrompt" , "vim" },
+            })
+        end
     },
 }
