@@ -113,9 +113,9 @@ end
 ---@return string
 function M.filename_component()
     -- filename with parent dir
-    -- local filename = vim.fn.expand('%:p:h:t') .. '/' .. vim.fn.expand('%:t')
+    local filename = vim.fn.expand('%:p:h:t') .. '/' .. vim.fn.expand('%:t')
     -- filename with base project
-    local filename = vim.fn.expand('%:p:.') .. '/' .. vim.fn.expand('%:t')
+    -- local filename = vim.fn.expand('%:p:.') .. '/' .. vim.fn.expand('%:t')
     return filename
 end
 
