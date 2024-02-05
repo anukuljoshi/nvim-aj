@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
                 -- api.tree.toggle({find_file = true, focus = true})
                 -- nvim-tree is still the active window. Go to the previous window.
                 -- vim.cmd("wincmd p")
-                vim.cmd("q")
+                -- vim.cmd("q")
             end, 0)
         end
     end
