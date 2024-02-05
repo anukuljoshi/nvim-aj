@@ -10,12 +10,12 @@ end
 
 -- Define a function to load the session
 function LoadSession()
-    -- if vim.fn.argc() == 0 then
+    if vim.fn.argc() == 0 then
         local sessionPath = vim.fn.expand(".vim/session.vim")
         if vim.fn.filereadable(sessionPath) == 1 then
             vim.cmd("source " .. sessionPath)
         end
-    -- end
+    end
 end
 
 -- Set up the autocmd
