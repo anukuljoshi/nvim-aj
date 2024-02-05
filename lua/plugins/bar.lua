@@ -55,13 +55,13 @@ return {
             -- Pin/unpin buffer
             vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", opts)
             -- close current
-            vim.keymap.set("n", "<leader>xx", "<Cmd>BufferClose<CR>", opts)
+            vim.keymap.set("n", "<leader>wi", "<Cmd>BufferClose<CR>", opts)
             -- close others
-            vim.keymap.set("n", "<leader>xo", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
+            vim.keymap.set("n", "<leader>wo", "<Cmd>BufferCloseAllButCurrent<CR>", opts)
             -- close left
-            vim.keymap.set("n", "<leader>xl", "<Cmd>BufferCloseBuffersLeft<CR>", opts)
+            vim.keymap.set("n", "<leader>wl", "<Cmd>BufferCloseBuffersLeft<CR>", opts)
             -- close right
-            vim.keymap.set("n", "<leader>xr", "<Cmd>BufferCloseBuffersRight<CR>", opts)
+            vim.keymap.set("n", "<leader>wr", "<Cmd>BufferCloseBuffersRight<CR>", opts)
             -- Wipeout buffer
             --                 :BufferWipeout
             -- Close commands
