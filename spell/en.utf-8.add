@@ -12,3 +12,10 @@ backends
 slugify
 kwargs
 geeksforgeeks
+kwarg
+paginator
+paginator
+filterset
+urlpatterns
+urls
+deque
