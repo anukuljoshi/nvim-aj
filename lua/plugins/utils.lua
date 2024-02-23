@@ -19,13 +19,13 @@ return {
             start_in_insert = true,
             insert_mappings = false,
             terminal_mappings = true,
-            direction = 'float',
+            direction = "float",
             float_opts = {
-                -- The border key is *almost* the same as 'nvim_open_win'
+                -- The border key is *almost* the same as "nvim_open_win"
                 -- see :h nvim_open_win for details on borders however
-                -- the 'curved' border is a custom border type
+                -- the "curved" border is a custom border type
                 -- not natively supported but implemented in this plugin.
-                border = 'single'
+                border = "single"
             },
         }
     },
@@ -44,14 +44,13 @@ return {
         },
         config = function()
             require("todo-comments").setup({
-                -- Show todo comments in the sign column but don't highlight the text
+                -- Show todo comments in the sign column but don"t highlight the text
                 highlight = {
                     before = "",
                     after = ""
                 },
             })
-            vim.keymap.set("n", "<leader>ts", "<Cmd>TodoTelescope<CR>")
-            vim.keymap.set("n", "<leader>tb", "<Cmd>TodoTrouble<CR>")
+            vim.keymap.set("n", "<leader>ft", "<Cmd>TodoTelescope<CR>")
         end
     },
     {
@@ -75,11 +74,11 @@ return {
         end,
     },
     {
-        'windwp/nvim-autopairs',
+        "windwp/nvim-autopairs",
         event = "InsertEnter",
         opts = {},
         config = function ()
-            require('nvim-autopairs').setup({
+            require("nvim-autopairs").setup({
               disable_filetype = { "TelescopePrompt" , "vim" },
             })
         end
