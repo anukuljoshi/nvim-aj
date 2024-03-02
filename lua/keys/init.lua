@@ -86,4 +86,10 @@ vim.keymap.set("n", "<leader>qo", quickFixToggle)
 vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>")
 vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
 
+vim.keymap.set("n", "<leader>sv", "<C-w>v") -- split window vertically
+vim.keymap.set("n", "<leader>sh", "<C-w>s") -- split window horizontally
+vim.keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width & height
+vim.keymap.set("n", "<leader>si", ":close<CR>") -- close current split window
+vim.keymap.set("n", "<leader>so", "<C-w>o") -- close other split windows
+
 require("keys.cmd")

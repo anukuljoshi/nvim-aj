@@ -131,5 +131,15 @@ autocmd({ "LspAttach" }, {
             "<Cmd>Format<CR>",
             optsCreate("Format current buffer")
         )
+        vim.keymap.set(
+            "n", "gv",
+            function ()
+                vim.cmd([[
+                    vsplit
+                ]])
+                vim.lsp.buf.definition()
+            end,
+            optsCreate("LSP [G]oto definition in [V]ertical split")
+        )
     end,
 })

@@ -47,6 +47,7 @@ return {
                     cwd = vim.fn.expand("%:p:h")
                 })
             end, { desc = "[F]ind in [.] cwd"})
+            vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "[F]ind [O]ld files" })
 
             -- search
             vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
@@ -57,6 +58,8 @@ return {
             vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [b]uffers" })
             vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "[F]ind [M]arks" })
             vim.keymap.set("n", "<leader>fq", builtin.quickfix, { desc = "[F]ind [Q]uickfix" })
+            vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "[F]ind [J]ump list" })
+            vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[F]ind [D]iagnostics" })
 
             -- git
             vim.keymap.set("n", "<leader>gg", builtin.git_status, { desc = "find [G]it [S]tatus" })
@@ -66,8 +69,8 @@ return {
             vim.keymap.set("n", "<leader>gb", builtin.git_branches, { desc = "Search [G]it [B]ranches"})
             vim.keymap.set("n", "<leader>gs", builtin.git_stash, { desc = "Search [G]it [S]tash list"})
 
-            -- treesitter
-            vim.keymap.set("n", "<leader>tt", builtin.treesitter, { desc = "[F]ind [T]reesitter objects"})
+            -- -- treesitter
+            -- vim.keymap.set("n", "<leader>tt", builtin.treesitter, { desc = "[F]ind [T]reesitter objects"})
 
             -- extras
             vim.keymap.set("n", "<leader>fc", builtin.colorscheme, { desc = "[F]ind [C]olorscheme" })

@@ -1,3 +1,6 @@
+vim.keymap.set("n", "<A-.>", "<cmd>bnext<cr>")
+vim.keymap.set("n", "<A-,>", "<cmd>bprev<cr>")
+
 return {
     -- {
     --     "romgrk/barbar.nvim",
