@@ -22,32 +22,4 @@ return {
             end, { silent = true })
         end
     },
-    {
-        "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function()
-            local neogen = require("neogen")
-            neogen.setup({})
-            vim.keymap.set(
-                "n", "<leader>dcf",
-                function()
-                    neogen.generate({ type = "func" })
-                end
-            )
-            vim.keymap.set(
-                "n", "<leader>dct",
-                function()
-                    neogen.generate({ type = "type" })
-                end
-            )
-            vim.keymap.set(
-                "n", "<leader>dcc",
-                function()
-                    neogen.generate({ type = "class" })
-                end
-            )
-        end,
-        -- Uncomment next line if you want to follow only stable versions
-        -- version = "*"
-    }
 }

@@ -9,9 +9,9 @@ return {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-cmdline",
         "hrsh7th/nvim-cmp",
+        "onsails/lspkind.nvim",
         -- snippet
         "L3MON4D3/LuaSnip",
-        "saadparwaiz1/cmp_luasnip",
         -- notification
         "j-hui/fidget.nvim"
     },
@@ -24,12 +24,15 @@ return {
                 -- python
                 "pyright",
                 -- go
-                "gopls",
+                "gopls", "templ",
                 -- js/ts
                 "tsserver",
                 -- vim/lua
                 "lua_ls",
+                -- web
+                "cssmodules_ls", "htmx", "html", "tailwindcss",
                 -- others
+                "lua_ls", "marksman", "sqlls"
             },
             handlers = {
                 function(server_name)
@@ -52,15 +55,17 @@ return {
 
         local cmp = require("cmp")
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            },
             completion = {
                 completeopt = 'menu,menuone,noinsert'
             },
-            snippet = {
-                expand = function(args)
-                    require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-                end,
-            },
             mapping = {
+                ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<Tab>"] = cmp.mapping({
                     i = cmp.mapping.confirm({
                         behavior = cmp.ConfirmBehavior.Replace,
@@ -117,40 +122,27 @@ return {
                         end
                     end
                 }),
-                -- ["<CR>"] = cmp.mapping({
-                --     i = cmp.mapping.confirm({
-                --         behavior = cmp.ConfirmBehavior.Replace,
-                --         select = false
-                --     }),
-                --     c = function(fallback)
-                --         if cmp.visible() then
-                --             cmp.confirm({
-                --                 behavior = cmp.ConfirmBehavior.Replace,
-                --                 select = false
-                --             })
-                --         else
-                --             fallback()
-                --         end
-                --     end
-                -- }),
             },
-            sources = cmp.config.sources({
+            formatting = {
+                format = function(_, vim_item)
+                    vim_item.kind = require("lspkind").presets.codicons[vim_item.kind]
+                    .. "  "
+                    .. vim_item.kind
+                    return vim_item
+                end,
+            },
+            sources = {
                 { name = "nvim_lsp" },
-                { name = "luasnip" }, -- For luasnip users.
-            }, {
+                { name = "path" },
                 { name = "buffer" },
-            })
+            },
         })
-        -- TODO: update this so that it works even after save
-        -- toggle diagnostics
-        local diagnostics_active = true
-        vim.keymap.set("n", "<leader>dg", function()
-            diagnostics_active = not diagnostics_active
-            if diagnostics_active then
-                vim.diagnostic.show()
-            else
-                vim.diagnostic.hide()
-            end
-        end)
+
+        vim.cmd([[
+            augroup NvimCmp
+            au!
+            au FileType TelescopePrompt lua require('cmp').setup.buffer { enabled = false }
+            augroup END
+        ]])
     end
 }

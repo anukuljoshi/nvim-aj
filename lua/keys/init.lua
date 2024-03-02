@@ -59,14 +59,31 @@ vim.keymap.set("n", "<leader>8", [["8]])
 vim.keymap.set("n", "<leader>9", [["9]])
 
 -- remove highlighted text
-vim.keymap.set("n", "<leader>n", ":nohl<CR>")
-
--- move line up down in visual mode
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<leader><leader>", "<cmd>nohl<CR>")
 
 -- keep text highlighted after indent/outdent
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- quickfix list movement
+local function quickFixToggle()
+    local qf_exists = false
+    for _, win in pairs(vim.fn.getwininfo()) do
+        if win["quickfix"] == 1 then
+            qf_exists = true
+        end
+    end
+    if qf_exists == true then
+        vim.cmd "cclose"
+        return
+    end
+    if not vim.tbl_isempty(vim.fn.getqflist()) then
+        vim.cmd "copen"
+    end
+end
+
+vim.keymap.set("n", "<leader>qo", quickFixToggle)
+vim.keymap.set("n", "<leader>qn", "<cmd>cnext<cr>")
+vim.keymap.set("n", "<leader>qp", "<cmd>cprev<cr>")
 
 require("keys.cmd")

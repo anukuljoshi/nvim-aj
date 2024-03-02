@@ -12,7 +12,8 @@ return {
                     -- main background
                     -- background = "#1b1e29",
                     -- background = "#2b2e39",
-                    background = "#2f323d",
+                    -- background = "#2f323d",
+                    background = "#202436",
                     -- nvim tree active line, indent line
                     mono_1     = "#404455",
                     -- telescope active line, statusline
