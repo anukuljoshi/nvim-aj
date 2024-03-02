@@ -52,7 +52,7 @@ return {
             -- search
             vim.keymap.set("n", "<leader>fw", builtin.grep_string, { desc = "[F]ind current [W]ord" })
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "[F]ind search by [G]rep" })
-            vim.keymap.set("n", "<leader>fs", builtin.search_history, { desc = "[F]ind [S]earch history" })
+            vim.keymap.set("n", "<leader>fh", builtin.search_history, { desc = "[F]ind Search [H]istory" })
 
             -- neovim
             vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "[F]ind existing [b]uffers" })
