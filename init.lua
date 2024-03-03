@@ -11,7 +11,7 @@ require("opts") -- Options
 require("plug")
 require("colors")
 require("statusline")
--- require("sessions")
+require("extras")
 require("keys") -- Keymaps
 require("setup") -- Keymaps
 
